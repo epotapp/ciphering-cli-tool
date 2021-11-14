@@ -8,15 +8,6 @@ const { rot8 } = require('./transrot8');
 const { rot8dec } = require('./transrot8dec');
 
 const { stderr, stdin, stdout, exit } = require('process'); 
-// const { argumentsCLI } = require('./index');
-
-// const configCipher = argumentsCLI[2];
-// const configInput = argumentsCLI[4];
-// const configOutput = argumentsCLI[6];
-// const validConfigs = [`-c`, `-config`, `-i`, `-input`, `-o`, `-output`];
-
-
-
 
 
 const argumentsCLI = process.argv;
@@ -34,67 +25,52 @@ if (argumentsCLI.indexOf('-c') > -1) {
 
 var configArray = configIncomingString.split('-');
 
-exports.configArray = configArray;
 
 
+var streamArray = [];
 
-let streamArray = [];
-//let configMap = new Map();
+var streamMap = new Map();
 
- for (let code = 0; code < configArray.length; code++) {
 
- console.log(configArray[code]);
+for (let code = 0; code < configArray.length; code++) {
+
+    console.log(configArray[code]);
     
-     switch(configArray[code]) {
-          case 'C0':
-              streamArray.push(caesardec)
-              //configMap.set(code, 'caesardec');
+    switch(configArray[code]) {
+        case 'C0':
+            //   streamArray.push(caesardec);
+              streamMap.set(code, caesardec);
               console.log('caesardec');
               break;
-          case 'C1':
-              streamArray.push(caesar)
-              //configMap.set(code, 'caesar');
+        case 'C1':
+            //   streamArray.push(caesar);
+              streamMap.set(code, caesar);
               console.log('caesar');
               break;
-          case 'A':
-              streamArray.push(atbash)
-              //configMap.set(code, 'atbash');
+        case 'A':
+            //   streamArray.push(atbash);
+              streamMap.set(code, atbash);
               console.log('atbash');
               break;
-          case 'R0':
-              streamArray.push(rot8dec)
-              //configMap.set(code, 'rot8dec');
+        case 'R0':
+            //   streamArray.push(rot8dec);
+              streamMap.set(code, rot8dec);
               console.log('rot8dec');
               break;
-          case 'R1':
-              streamArray.push(rot8)
-              //configMap.set(code, 'rot8');
+        case 'R1':
+            //   streamArray.push(rot8);
+              streamMap.set(code, rot8);
               console.log('rot8');
               break;
-          default:
+        default:
               throw new Error(`Ошибка валидации конфига`)
-      }
+    }
 
- }
+}
 
-
-//  console.log(streamArray[0]);
-
-exports.streamArray = streamArray;
+console.log (streamMap.get(2));
 
 
-
-// var configSet = new Set(configArray.sort());
-// for (let code of configSet) {
-//     console.log(configSet.values());
-// }
+exports.streamMap = streamMap;
 
 
-
-
-// if ( (configCipher !== validConfigs[0]) || (configCipher == validConfigs[1]) ) {
-//     throw new Error(
-//         'Введите строку конфигурации -c "Шифр вида {XY-}n" -i "шифруемый файл" -o "файл записи"'
-//         );
-//     };
-    

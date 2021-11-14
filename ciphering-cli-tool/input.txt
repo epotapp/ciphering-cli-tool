@@ -1,4 +1,1 @@
-This is secret. Text about "_" symbol!
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
-
-abcdefghijklmnopqrstuvwxyz-=`'

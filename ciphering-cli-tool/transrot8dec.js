@@ -1,43 +1,6 @@
-const { Transform, pipeline } = require('stream');
-const { createReadStream, createWriteStream } = require('fs');
-const { strictEqual } = require('assert');
+const { Transform } = require('stream');
 
-const readable = createReadStream('./input.txt');
-const writable = createWriteStream('./output.txt');
-
-class TransRot8Dec extends Transform {
-    
-    constructor () {
-        super({transform(chunk, encoding, callback) {
-
-            const chunkStringified = chunk.toString();
-    
-            const transformedChunk = rot8Func(chunkStringified);
-               
-            callback(null, transformedChunk);
-            }
-        });
-    }
-}
-
-
-const rot8dec = new TransRot8Dec(0);
-
-exports.rot8dec = rot8dec;
-
-
-
-// pipeline(
-//      readable,
-//      rot8dec,
-//      writable,
-//      (err) => {
-//          throw new Error (`o_Oops! Error occured: ${err}`);
-//      }
-//  )
-    
-    
-function rot8Func (str) {
+function rot8DecFunc (str) {
         
     let array = str.split('');
     let transformedArray = [];
@@ -59,6 +22,27 @@ function rot8Func (str) {
     }   
     
     return transformedArray.join('');
-    
+  
 }
+
+
+class TransRot8Dec extends Transform {
     
+    constructor () {
+        super({transform(chunk, encoding, callback) {
+
+            const chunkStringified = chunk.toString();
+    
+            const transformedChunk = rot8DecFunc(chunkStringified);
+               
+            callback(null, transformedChunk);
+            }
+        });
+    }
+}
+
+
+
+const rot8dec = new TransRot8Dec();
+
+exports.rot8dec = rot8dec;
