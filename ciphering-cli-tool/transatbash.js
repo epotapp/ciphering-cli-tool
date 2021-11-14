@@ -21,4 +21,5 @@ class Atbash extends Transform {
 
 const atbash = new Atbash();
 
+
 exports.atbash = atbash;

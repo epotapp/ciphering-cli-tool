@@ -30,12 +30,15 @@ var configArray = configIncomingString.split('-');
 var streamArray = [];
 
 
+
+
 for (let code = 0; code < configArray.length; code++) {
 
     console.log(configArray[code]);
     
     switch(configArray[code]) {
         case 'C0':
+
             streamArray.push(caesardec);
               console.log('caesardec');
               break;
@@ -53,14 +56,19 @@ for (let code = 0; code < configArray.length; code++) {
               break;
         case 'R1':
             streamArray.push(rot8);
+
+
               console.log('rot8');
               break;
         default:
               throw new Error(`Ошибка валидации конфига`)
     }
 
+
 }
 
+
+exports.streamMap = streamMap;
 
 
 
