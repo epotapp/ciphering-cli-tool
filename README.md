@@ -1,6 +1,6 @@
 # Ciphering CLI Tool
 
-**This CLI-tool helps encrypt a text in three ways.
+**This CLI-tool helps encrypt a text in three ways.**
 
 CLI tool should accept 3 options (short alias and full name):
 
@@ -20,4 +20,4 @@ CLI tool should accept 3 options (short alias and full name):
 For example, config "C1-C1-R0-A" means "encode by Caesar cipher => encode by Caesar cipher => decode by ROT-8 => use Atbash"
 
 
-**Please write a command based on example of "node ciphering-cli-tool -c C1-A-R1 -i input.txt -o output.txt"
+**Please write a command based on example of "node ciphering-cli-tool -c C1-A-R1 -i input.txt -o output.txt"**
