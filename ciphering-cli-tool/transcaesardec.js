@@ -24,7 +24,7 @@ class TransCaesarDec extends Transform {
 }
 
 
-const caesardec = new TransCaesarDec(0);
+const caesardec = new TransCaesarDec();
 
 exports.caesardec = caesardec;
 

@@ -22,7 +22,7 @@ class TransCaesar extends Transform {
 }
 
 
-const caesar = new TransCaesar(0);
+const caesar = new TransCaesar();
 
 exports.caesar = caesar;
 

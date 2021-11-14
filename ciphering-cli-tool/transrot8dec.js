@@ -21,7 +21,7 @@ class TransRot8Dec extends Transform {
 }
 
 
-const rot8dec = new TransRot8Dec(0);
+const rot8dec = new TransRot8Dec();
 
 exports.rot8dec = rot8dec;
 

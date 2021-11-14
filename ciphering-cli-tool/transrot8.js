@@ -31,7 +31,7 @@ class TransRot8 extends Transform {
 }
 
 
-const rot8 = new TransRot8(0);
+const rot8 = new TransRot8();
 
 exports.rot8 = rot8;
 
