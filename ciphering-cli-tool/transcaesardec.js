@@ -1,44 +1,6 @@
-const { Transform, pipeline } = require('stream');
-const { createReadStream, createWriteStream } = require('fs');
-const { strictEqual } = require('assert');
+const { Transform } = require('stream');
 
-const readable = createReadStream('./input.txt');
-const writable = createWriteStream('./output.txt');
-
-class TransCaesarDec extends Transform {
-    
-    constructor ( options = {} ) {
-        super(options);
-    }
-
-    _transform(chunk, encoding, callback) {
-
-        const chunkStringified = chunk.toString();
-
-        const transformedChunk = caesarFunc(chunkStringified)
-
-        callback(null, transformedChunk);
-
-    } 
-
-}
-
-
-const caesardec = new TransCaesarDec();
-
-exports.caesardec = caesardec;
-
-//  pipeline(
-//      readable,
-//      caesardec,
-//      writable,
-//      (err) => {
-//          throw new Error (`o_Oops! Error occured: ${err}`);
-//      }
-//  )
-    
-    
-function caesarFunc (str) {
+function caesarDecFunc (str) {
         
     let array = str.split('');
     let transformedArray = [];
@@ -62,4 +24,27 @@ function caesarFunc (str) {
     return transformedArray.join('');
     
 }
+
+
+class TransCaesarDec extends Transform {
     
+    constructor ( options = {} ) {
+        super(options);
+    }
+
+    _transform(chunk, encoding, callback) {
+
+        const chunkStringified = chunk.toString();
+
+        const transformedChunk = caesarDecFunc(chunkStringified)
+
+        callback(null, transformedChunk);
+
+    } 
+
+}
+
+
+const caesardec = new TransCaesarDec();
+
+exports.caesardec = caesardec;

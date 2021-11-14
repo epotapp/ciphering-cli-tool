@@ -1,41 +1,5 @@
-const { Transform, pipeline } = require('stream');
-const { createReadStream, createWriteStream } = require('fs');
-const { strictEqual } = require('assert');
+const { Transform } = require('stream');
 
-const readable = createReadStream('./input.txt');
-const writable = createWriteStream('./output.txt');
-
-class TransCaesar extends Transform {
-    
-    constructor () {
-        super({transform(chunk, encoding, callback) {
-
-            const chunkStringified = chunk.toString();
-    
-            const transformedChunk = caesarFunc(chunkStringified)
-    
-            callback(null, transformedChunk);
-    
-            } 
-        });
-    }
-}
-
-
-const caesar = new TransCaesar();
-
-exports.caesar = caesar;
-
-//  pipeline(
-//      readable,
-//      caesar,
-//      writable,
-//      (err) => {
-//          throw new Error (`o_Oops! Error occured: ${err}`);
-//      }
-//  )
-    
-    
 function caesarFunc (str) {
         
     let array = str.split('');
@@ -60,47 +24,25 @@ function caesarFunc (str) {
     return transformedArray.join('');
     
 }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 
+class TransCaesar extends Transform {
+    
+    constructor () {
+        super({transform(chunk, encoding, callback) {
 
-// function caesarFunc (str) {
-//     let alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-//     let alphabetUpper = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-
-//     let array = str.split('');
-//     let transformedArray = [];
-
-//     for (i = 0; i < str.length; i++) {
-        
-//         if ( alphabet.includes(array[i]) ) {
-            
-//             let letterIndex = alphabet.indexOf(array[i]);
-//                 if( letterIndex == 25 ) {
-//                     transformedArray.push('a');
-//                 } else transformedArray.push( alphabet[letterIndex + 1] );
-        
-//         } else if ( alphabetUpper.includes(array[i]) ) {
-//              let letterIndex = alphabetUpper.indexOf(array[i]);
-//                 if( letterIndex == 25 ) {
-//                     transformedArray.push('A');
-//                 } else transformedArray.push( alphabet[letterIndex + 1] );
-        
-//             } else transformedArray.push(array[i]);
-//     }   
-
-//     return transformedArray.join('');
-
-// }
+            const chunkStringified = chunk.toString();
+    
+            const transformedChunk = caesarFunc(chunkStringified)
+    
+            callback(null, transformedChunk);
+    
+            } 
+        });
+    }
+}
 
 
+const caesar = new TransCaesar();
+
+exports.caesar = caesar;
