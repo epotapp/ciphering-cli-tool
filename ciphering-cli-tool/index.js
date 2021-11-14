@@ -1,4 +1,4 @@
-const { pipeline: pipelinePromisified } = require('stream/promises');
+//const { pipeline: pipelinePromisified } = require('stream/promises');
 const { pipeline } = require('stream');
 
 const fs = require('fs');
@@ -8,7 +8,7 @@ const { createReadStream } = require('fs');
 const { createWriteStream } = require('fs');
 
 
-const { streamMap } = require('./configDecoder');
+const { streamArray } = require('./configDecoder');
 const { stderr } = require('process');
 
 
@@ -18,54 +18,18 @@ const readable = createReadStream(inputPath);
 const outputPath = path.resolve(__dirname, './output.txt');
 const writable = createWriteStream(outputPath);
 
-// streamArray.unshift(readable);
-// streamArray.push(writable);
-// const procError = processError();
-// streamArray.push(procError);
 
 
-// /* function processData (streams) {
-//     pipeline(
-//         readable,
-//         streams
-//     )    
-// } */
-    
-// function processError (err) {
-//     throw new Error (`o_Oops! Error occured: ${err}`);
-// }
-
-// console.log(streamArray[0]);
-// console.log(streamArray[1]);
-// console.log(streamArray[2]);
-// console.log(streamArray[3]);
-// console.log(streamArray[4]);
-// console.log(streamArray[5]);
-
- for (let code of streamMap.values()) {
-     console.log ( streamMap.get(code) );
-}
 
 pipeline(
     readable,
-    
+    ...streamArray,
     writable,
     (error) => { if (error) throw error }
 );
     
     
-    
-// console.log(readable);
-// console.log(streamArray);
-// console.log(writable);    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     
     
