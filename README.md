@@ -27,4 +27,4 @@ Atbash unfolds the alphabet in a mirror image.
 
 **Please write a command based on example of:**  
 
-**"node ciphering-cli-tool -c C1-A-R1 -i input.txt -o output.txt"**
+**"node index.js -c C1-A-R1 -i input.txt -o output.txt"**
