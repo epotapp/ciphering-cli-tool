@@ -19,6 +19,11 @@ CLI tool should accept 3 options (short alias and full name):
 
 For example, config "C1-C1-R0-A" means "encode by Caesar cipher => encode by Caesar cipher => decode by ROT-8 => use Atbash"
 
+The original text should be in the **input.txt** file. The ciphertext must be in a file called **output.txt**.
+
+Caesar's cipher shifts the alphabet 1 letter forward. 
+Rot8, respectively, 8 letters forward. 
+Atbash unfolds the alphabet in a mirror image.
 
 **Please write a command based on example of:**  
 
