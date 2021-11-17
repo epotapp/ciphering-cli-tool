@@ -28,4 +28,4 @@ Atbash unfolds the alphabet in a mirror image.
 
 **Please write a command based on example of:**  
 
-**"node index.js -c C1-A-R1 -i input.txt -o output.txt"**
+**"node my_ciphering_cli -c C1-A-R1 -i input.txt -o output.txt"**
