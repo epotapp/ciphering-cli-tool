@@ -1,25 +1,36 @@
-const { Transform } = require('stream');
+const { Transform } = require("stream");
 
-class Atbash extends Transform {
+function atbashFunc(str) {
+  let array = str.split("");
+  let transformedArray = [];
+
+  for (i = 0; i < array.length; i++) {
+    let inpLetterIndex = array[i].charCodeAt();
+
+    if (inpLetterIndex > 64 && inpLetterIndex < 91) {
+      transformedArray.push(String.fromCharCode( (91 - (inpLetterIndex - 64))));
     
-    constructor () {
-        super({transform(chunk, encoding, callback) {
+    }  else if (inpLetterIndex > 96 && inpLetterIndex < 123) {
+        transformedArray.push(String.fromCharCode( (123 - (inpLetterIndex - 96))));
+      } else transformedArray.push(array[i]);
+  }
 
-            const chunkStringified = chunk.toString();
-    
-            const transformedChunk = chunkStringified.split('').reverse().join('');
-
-            callback(null, transformedChunk);
-            } 
-        });
-    }
-
-    
-
+  return transformedArray.join("");
 }
 
+class Atbash extends Transform {
+  constructor() {
+    super();
+  }
+  _transform(chunk, encoding, callback) {
+    const chunkStringified = chunk.toString();
 
-const atbash = new Atbash();
+    const transformedChunk = atbashFunc(chunkStringified);
+    this.push(transformedChunk);
+    callback();
+  }
+}
 
-
-exports.atbash = atbash;
+//const atbash = new Atbash();
+module.exports = Atbash;
+//exports.atbash = new Atbash();
