@@ -18,6 +18,5 @@ class TransCaesarDec extends Transform {
   }
 }
 
-//const caesardec = new TransCaesarDec();
+
 module.exports = TransCaesarDec;
-//exports.caesardec = new TransCaesarDec();

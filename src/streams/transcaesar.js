@@ -14,6 +14,5 @@ class TransCaesar extends Transform {
   }
 }
 
-//const caesar = new TransCaesar();
+
 module.exports = TransCaesar;
-//exports.caesar = new TransCaesar();

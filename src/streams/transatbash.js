@@ -14,6 +14,5 @@ class Atbash extends Transform {
   }
 }
 
-//const atbash = new Atbash();
+
 module.exports = Atbash;
-//exports.atbash = new Atbash();

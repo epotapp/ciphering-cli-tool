@@ -4,33 +4,17 @@ const atbash = require("./streams/transatbash");
 const rot8 = require("./streams/transrot8");
 const rot8dec = require("./streams/transrot8dec");
 
-const argumentsCLI = process.argv;
+const configValidator = require('./validatorconfig');
 
 
-if ( 
-    ( argumentsCLI.lastIndexOf('-c') !== argumentsCLI.indexOf("-c") )  
-    || ( argumentsCLI.lastIndexOf('--config') !== argumentsCLI.indexOf("--config") ) 
-    ) {
-    throw new Error("Ошибка. Конфигурация должна задаваться лишь единожды.");
-}
-
-
-if (argumentsCLI.indexOf("-c") > -1) {
-  var configIncomingString = argumentsCLI[argumentsCLI.indexOf("-c") + 1];
-} else if (argumentsCLI.indexOf("--config") > -1) {
-  configIncomingString = argumentsCLI[argumentsCLI.indexOf("--config") + 1];
-} else {
-  throw new Error("Пожалуйста, введите корректную конфигурацию шифров (Пример: -c/--config C1-A-R1)");
-}
-
-
+var configArray = configValidator(process.argv);
 
 
 console.log('');
 console.log('Начало работы программы.');
 console.log('');
 console.log('Используется следующая конфигурация шифров:');
-var configArray = configIncomingString.split("-");
+
 
 var streamArray = [];
 
