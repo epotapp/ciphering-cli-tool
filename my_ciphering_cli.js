@@ -1,8 +1,7 @@
-// const { pipeline: pipelinePromisified } = require('stream/promises');
 const fs = require('fs');
 const { pipeline } = require("stream");
 
-const { streamArray } = require("./src/configDecoder");
+const configDecoder = require("./src/configDecoder");
 const { stderr, stdin, stdout} = require("process");
 
 const { createReadStream } = require("fs"); 
@@ -21,6 +20,8 @@ const outputValidator = new OutputValidator(process.argv);
 
 try {
     
+    let streamArray = configDecoder();
+
     inputValidator.validate();
     outputValidator.validate();
 
